@@ -1,6 +1,6 @@
 {
   "chat-answer-with-claims": {
-    "alt": "A Grounded agent's answer in the web chat, with numbered citation chips, a claim summary such as \"9 of 10 claims supported\" and the sources it used",
+    "alt": "A help desk agent's answer in the Grounded chat: numbered steps for resetting a password, each with a citation chip, an open claim card reading \"Claim supported by this source\" above the passage it came from, and a \"5 of 6 claims supported\" summary above the sources.",
     "caption": "An answer with numbered citations. With SystemOne citation checks on, each claim shows its verdict."
   },
   "agent-build": {
@@ -11,9 +11,9 @@
     "alt": "An evaluation set's runs, with each run's score over time and the questions that failed",
     "caption": "An evaluation set: scores over time and what changed between runs."
   },
-  "team-overview": {
-    "alt": "A team's Overview page, showing each evaluation set's latest score and trend, and this month's spend against the budget",
-    "caption": "The team Overview: evaluation trends, and spend against the budget for owners and admins."
+  "team-overview-quality-and-spend": {
+    "alt": "A help desk team's Overview in Grounded: counts of data sources, knowledge bases, agents and documents; evaluation scores, with one set down 17 points from the run before; and this month's spend of $0.02 of a $50.00 budget.",
+    "caption": "The team Overview: each evaluation set's latest score and trend, and spend against the budget for owners and admins."
   },
   "admin-overview-features": {
     "alt": "The platform admin Overview with its Features card, listing the state of evaluations, cost tracking, OCR, SSO groups, SystemOne, public access and maintenance",

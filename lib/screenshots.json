@@ -1,1 +1,12 @@
-{}
+{
+  "chat-answer-with-claims": {
+    "src": "/images/chat-answer-with-claims.webp",
+    "width": 1440,
+    "height": 900
+  },
+  "team-overview-quality-and-spend": {
+    "src": "/images/team-overview-quality-and-spend.webp",
+    "width": 1440,
+    "height": 900
+  }
+}

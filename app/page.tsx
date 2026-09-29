@@ -317,7 +317,7 @@ function Features() {
           </>,
         ]}
         note={<>Evaluations test retrieval and answers, not an agent&apos;s tools beyond knowledge-base search.</>}
-        media={<Shots slots={["evaluations-runs", "team-overview"]} />}
+        media={<Shots slots={["evaluations-runs", "team-overview-quality-and-spend"]} />}
       />
 
       <Feature

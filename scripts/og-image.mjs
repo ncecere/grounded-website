@@ -50,7 +50,7 @@ if (hasShot) {
     `<svg width="${info.width}" height="${height}"><rect width="${info.width}" height="${height}" rx="16" fill="#fff"/></svg>`,
   );
   const rounded = await sharp(cropped).composite([{ input: mask, blend: "dest-in" }]).png().toBuffer();
-  layers.push({ input: rounded, left: W - shotWidth - 60, top: 60 });
+  layers.push({ input: rounded, left: W - shotWidth - 60, top: Math.round((H - height) / 2) });
 }
 
 await sharp(Buffer.from(svg))
