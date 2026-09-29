@@ -1,0 +1,38 @@
+{
+  "chat-answer-with-claims": {
+    "alt": "A Grounded agent's answer in the web chat, with numbered citation chips, a claim summary such as \"9 of 10 claims supported\" and the sources it used",
+    "caption": "An answer with numbered citations. With SystemOne citation checks on, each claim shows its verdict."
+  },
+  "agent-build": {
+    "alt": "The agent editor's Build tab: the agent's instructions, its knowledge bases and a Try it panel",
+    "caption": "The agent editor: build a draft, try it, then publish an immutable version."
+  },
+  "evaluations-runs": {
+    "alt": "An evaluation set's runs, with each run's score over time and the questions that failed",
+    "caption": "An evaluation set: scores over time and what changed between runs."
+  },
+  "team-overview": {
+    "alt": "A team's Overview page, showing each evaluation set's latest score and trend, and this month's spend against the budget",
+    "caption": "The team Overview: evaluation trends, and spend against the budget for owners and admins."
+  },
+  "admin-overview-features": {
+    "alt": "The platform admin Overview with its Features card, listing the state of evaluations, cost tracking, OCR, SSO groups, SystemOne, public access and maintenance",
+    "caption": "Admin Overview: every optional feature's state, and where to set it."
+  },
+  "costs-overview": {
+    "alt": "Admin Costs overview: spend KPIs, a daily spend chart and a Top spenders card by team, agent and model",
+    "caption": "Costs: spend per team, agent and model, with monthly budgets."
+  },
+  "admin-parsing-ocr": {
+    "alt": "Admin Parsing and OCR settings, choosing an OCR backend and testing it",
+    "caption": "Parsing & OCR: one backend, bounded per document, per worker and per team."
+  },
+  "admin-sso-groups": {
+    "alt": "Admin SSO groups: rules that map identity-provider groups to team roles, with a dry run",
+    "caption": "SSO groups: map identity-provider groups to team roles, with a dry run first."
+  },
+  "agent-share": {
+    "alt": "An agent's Share tab: audience, the public page, the embeddable widget snippet and the OpenAI-compatible model name",
+    "caption": "Share an agent in the web UI, as an embedded widget, or through the OpenAI-compatible API."
+  }
+}

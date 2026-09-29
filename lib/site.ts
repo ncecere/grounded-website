@@ -1,0 +1,20 @@
+export const site = {
+  name: "Grounded",
+  url: "https://grounded.bitop.dev",
+  title: "Grounded: open-source agents that answer from your own sources, with citations",
+  description:
+    "Grounded is a self-hosted, open-source (MIT) platform where teams turn their documents and websites into knowledge bases and publish agents that answer only from them, with citations.",
+  docsUrl: "https://docs.grounded.bitop.dev",
+  repoUrl: "https://github.com/ncecere/grounded",
+  demoUrl: "https://kb.bitop.dev",
+  version: "v0.2.1",
+  releaseDate: "2026-09-29",
+  releaseNotesUrl: "https://github.com/ncecere/grounded/blob/v0.2.1/docs/releases/v0.2.1.md",
+  changelogUrl: "https://github.com/ncecere/grounded/blob/v0.2.1/CHANGELOG.md",
+  licenseUrl: "https://github.com/ncecere/grounded/blob/v0.2.1/LICENSE",
+  demoDocUrl: "https://github.com/ncecere/grounded/blob/v0.2.1/docs/demo.md",
+  kubernetesGuideUrl: "https://github.com/ncecere/grounded/blob/v0.2.1/docs/deployments/kubernetes.md",
+  securityUrl: "https://github.com/ncecere/grounded/blob/v0.2.1/SECURITY.md",
+  roadmapUrl: "https://github.com/ncecere/grounded/blob/v0.2.1/docs/roadmap.md",
+  websiteRepoUrl: "https://github.com/ncecere/grounded-website",
+} as const;
