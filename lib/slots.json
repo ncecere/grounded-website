@@ -5,11 +5,13 @@
   },
   "agent-build": {
     "alt": "The agent editor's Build tab: the agent's instructions, its knowledge bases and a Try it panel",
-    "caption": "The agent editor: build a draft, try it, then publish an immutable version."
+    "caption": "The agent editor: build a draft, try it, then publish an immutable version.",
+    "file": "agent-editor-build-try-it"
   },
   "evaluations-runs": {
     "alt": "An evaluation set's runs, with each run's score over time and the questions that failed",
-    "caption": "An evaluation set: scores over time and what changed between runs."
+    "caption": "An evaluation set: scores over time and what changed between runs.",
+    "file": "evaluation-runs-chart"
   },
   "team-overview-quality-and-spend": {
     "alt": "A help desk team's Overview in Grounded: counts of data sources, knowledge bases, agents and documents; evaluation scores, with one set down 17 points from the run before; and this month's spend of $0.02 of a $50.00 budget.",
@@ -21,7 +23,8 @@
   },
   "costs-overview": {
     "alt": "Admin Costs overview: spend KPIs, a daily spend chart and a Top spenders card by team, agent and model",
-    "caption": "Costs: spend per team, agent and model, with monthly budgets."
+    "caption": "Costs: spend per team, agent and model, with monthly budgets.",
+    "file": "admin-costs-overview"
   },
   "admin-parsing-ocr": {
     "alt": "Admin Parsing and OCR settings, choosing an OCR backend and testing it",
@@ -33,6 +36,7 @@
   },
   "agent-share": {
     "alt": "An agent's Share tab: audience, the public page, the embeddable widget snippet and the OpenAI-compatible model name",
-    "caption": "Share an agent in the web UI, as an embedded widget, or through the OpenAI-compatible API."
+    "caption": "Share an agent in the web UI, as an embedded widget, or through the OpenAI-compatible API.",
+    "file": "agent-share-widget-preview"
   }
 }

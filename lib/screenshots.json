@@ -4,8 +4,43 @@
     "width": 1440,
     "height": 900
   },
+  "agent-build": {
+    "src": "/images/agent-build.webp",
+    "width": 1440,
+    "height": 900
+  },
+  "evaluations-runs": {
+    "src": "/images/evaluations-runs.webp",
+    "width": 1440,
+    "height": 900
+  },
   "team-overview-quality-and-spend": {
     "src": "/images/team-overview-quality-and-spend.webp",
+    "width": 1440,
+    "height": 900
+  },
+  "admin-overview-features": {
+    "src": "/images/admin-overview-features.webp",
+    "width": 1440,
+    "height": 1697
+  },
+  "costs-overview": {
+    "src": "/images/costs-overview.webp",
+    "width": 1440,
+    "height": 900
+  },
+  "admin-parsing-ocr": {
+    "src": "/images/admin-parsing-ocr.webp",
+    "width": 1440,
+    "height": 900
+  },
+  "admin-sso-groups": {
+    "src": "/images/admin-sso-groups.webp",
+    "width": 1440,
+    "height": 900
+  },
+  "agent-share": {
+    "src": "/images/agent-share.webp",
     "width": 1440,
     "height": 900
   }

@@ -21,7 +21,9 @@ const manifest = {};
 const missing = [];
 
 for (const name of Object.keys(slots)) {
-  const src = [".png", ".webp", ".jpg"].map((ext) => join(sourceDir, name + ext)).find((p) => existsSync(p));
+  // A slot may name its source file ("file"), when the screenshot set names it differently.
+  const base = slots[name].file ?? name;
+  const src = [".png", ".webp", ".jpg"].map((ext) => join(sourceDir, base + ext)).find((p) => existsSync(p));
   const dest = join(outDir, `${name}.webp`);
   if (!src) {
     missing.push(`${name}.png`);
