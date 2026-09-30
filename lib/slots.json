@@ -38,5 +38,20 @@
     "alt": "An agent's Share tab: audience, the public page, the embeddable widget snippet and the OpenAI-compatible model name",
     "caption": "Share an agent in the web UI, as an embedded widget, or through the OpenAI-compatible API.",
     "file": "agent-share-widget-preview"
+  },
+  "mcp-tool-source": {
+    "alt": "A Grounded chat answer that cites a tool's result: among the sources, \"From Service status · check_outage\" appears next to passages from documents.",
+    "caption": "Agents can call tools that admins approved. A tool's result is cited like a passage, so claim checks cover it too.",
+    "file": "chat-tool-source"
+  },
+  "health-connections": {
+    "alt": "Admin Connections with a Health column: two connections \"Healthy · 3 minutes ago\" and one \"Failing · since 2 hours ago\", with a Health filter.",
+    "caption": "Stored health: the last test of every connection, model and MCP server, re-tested on a schedule.",
+    "file": "admin-connections-health"
+  },
+  "tracing-trace": {
+    "alt": "One Grounded answer as a trace in Jaeger: the HTTP request, the answer, retrieval, a model call and an MCP tool call, each with its duration.",
+    "caption": "One answer, one trace: retrieval, model calls, checks and tool calls.",
+    "file": "tracing-answer-trace"
   }
 }
