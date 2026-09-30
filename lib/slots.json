@@ -4,7 +4,7 @@
     "caption": "An answer with numbered citations. With SystemOne citation checks on, each claim shows its verdict."
   },
   "agent-build": {
-    "alt": "The agent editor's Build tab: the agent's instructions, its knowledge bases and a Try it panel",
+    "alt": "The agent editor's Build tab: the agent's instructions, its model, knowledge bases and tools, and a Try it panel with an answer that used a tool",
     "caption": "The agent editor: build a draft, try it, then publish an immutable version.",
     "file": "agent-editor-build-try-it"
   },
@@ -18,11 +18,11 @@
     "caption": "The team Overview: each evaluation set's latest score and trend, and spend against the budget for owners and admins."
   },
   "admin-overview-features": {
-    "alt": "The platform admin Overview with its Features card, listing the state of evaluations, cost tracking, OCR, SSO groups, SystemOne, public access and maintenance",
+    "alt": "The platform admin Overview with Needs attention and its Features card, listing the state of evaluations, the MCP server, OAuth sign-in for MCP clients (experimental), cost tracking, OCR, SSO groups, SystemOne, public access and maintenance",
     "caption": "Admin Overview: every optional feature's state, and where to set it."
   },
   "costs-overview": {
-    "alt": "Admin Costs overview: spend KPIs, a daily spend chart and a Top spenders card by team, agent and model",
+    "alt": "Admin Costs overview: spend, tokens, requests and unpriced usage, and a daily spend chart by kind, including MCP tools",
     "caption": "Costs: spend per team, agent and model, with monthly budgets.",
     "file": "admin-costs-overview"
   },
@@ -40,17 +40,17 @@
     "file": "agent-share-widget-preview"
   },
   "mcp-tool-source": {
-    "alt": "A Grounded chat answer that cites a tool's result: among the sources, \"From Service status · check_outage\" appears next to passages from documents.",
+    "alt": "A Grounded chat answer about connecting to eduroam that cites a tool's result: among the sources, \"From Service status · check_outage\" appears next to passages from a Wi-Fi help article.",
     "caption": "Agents can call tools that admins approved. A tool's result is cited like a passage, so claim checks cover it too.",
     "file": "chat-tool-source"
   },
   "health-connections": {
-    "alt": "Admin Connections with a Health column: two connections \"Healthy · 3 minutes ago\" and one \"Failing · since 2 hours ago\", with a Health filter.",
+    "alt": "Admin Connections with a Health column: three connections \"Healthy\" a few minutes ago and a backup gateway \"Failing · since 8 minutes ago\", with a Health filter.",
     "caption": "Stored health: the last test of every connection, model and MCP server, re-tested on a schedule.",
     "file": "admin-connections-health"
   },
   "tracing-trace": {
-    "alt": "One Grounded answer as a trace in Jaeger: the HTTP request, the answer, retrieval, a model call and an MCP tool call, each with its duration.",
+    "alt": "One Grounded answer as a trace in Jaeger: the HTTP request, the answer, retrieval, two model calls, an MCP tool call with its HTTP exchanges, and SystemOne checks, each with its duration.",
     "caption": "One answer, one trace: retrieval, model calls, checks and tool calls.",
     "file": "tracing-answer-trace"
   }

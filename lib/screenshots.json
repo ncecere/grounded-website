@@ -22,7 +22,7 @@
   "admin-overview-features": {
     "src": "/images/admin-overview-features.webp",
     "width": 1440,
-    "height": 1697
+    "height": 1848
   },
   "costs-overview": {
     "src": "/images/costs-overview.webp",
@@ -41,6 +41,21 @@
   },
   "agent-share": {
     "src": "/images/agent-share.webp",
+    "width": 1440,
+    "height": 900
+  },
+  "mcp-tool-source": {
+    "src": "/images/mcp-tool-source.webp",
+    "width": 1440,
+    "height": 900
+  },
+  "health-connections": {
+    "src": "/images/health-connections.webp",
+    "width": 1440,
+    "height": 900
+  },
+  "tracing-trace": {
+    "src": "/images/tracing-trace.webp",
     "width": 1440,
     "height": 900
   }
