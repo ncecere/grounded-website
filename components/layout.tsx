@@ -49,6 +49,7 @@ export function SiteHeader() {
 
 export function SiteFooter() {
   const year = new Date(site.releaseDate).getUTCFullYear();
+  const releaseDay = new Date(site.releaseDate).toLocaleDateString("en-US", { timeZone: "UTC", year: "numeric", month: "long", day: "numeric" });
   return (
     <footer className="border-t border-brand-border bg-brand-surface">
       <div className="container-page grid gap-10 py-12 md:grid-cols-[1.4fr_1fr_1fr]">
@@ -66,7 +67,7 @@ export function SiteFooter() {
             <a href={site.releaseNotesUrl} className="font-medium text-brand-link underline underline-offset-2 hover:text-brand-link-hover">
               {site.version}
             </a>{" "}
-            (<time dateTime={site.releaseDate}>September 29, 2026</time>)
+            (<time dateTime={site.releaseDate}>{releaseDay}</time>)
           </p>
         </div>
         <nav aria-labelledby="footer-project">
