@@ -8,7 +8,7 @@ export const site = {
   repoUrl: "https://github.com/ncecere/grounded",
   demoUrl: "https://kb.bitop.dev",
   version: "v0.3.0",
-  // Set to the release day when v0.3.0 is tagged; the footer shows it.
+  // The release day of `version` (the footer and the sitemap show it).
   releaseDate: "2026-09-30",
   releaseNotesUrl: "https://docs.grounded.bitop.dev/docs/releases/v0-3-0",
   changelogUrl: "https://github.com/ncecere/grounded/blob/v0.3.0/CHANGELOG.md",
