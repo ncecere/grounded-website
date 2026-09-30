@@ -227,10 +227,20 @@ const apiExample = `curl https://grounded.example.org/v1/chat/completions \\
 
 const kustomizeExample = `# kustomization.yaml in your own overlay repository
 resources:
-  - https://github.com/ncecere/grounded//deploy/kubernetes/base?ref=v0.2.1
+  - https://github.com/ncecere/grounded//deploy/kubernetes/base?ref=v0.3.0
 images:
   - name: ghcr.io/ncecere/grounded
     digest: sha256:<digest from the release notes>`;
+
+const mcpExample = `{
+  "mcpServers": {
+    "grounded": {
+      "type": "http",
+      "url": "https://grounded.example.edu/mcp",
+      "headers": { "Authorization": "Bearer \${GROUNDED_API_KEY}" }
+    }
+  }
+}`;
 
 const cosignExample = `cosign verify ghcr.io/ncecere/grounded@sha256:<digest> \\
   --certificate-identity-regexp '^https://github.com/ncecere/grounded/\\.github/workflows/' \\
@@ -451,6 +461,9 @@ function Features() {
             response.
           </>,
           <>
+            <Strong>AI tools</Strong> such as coding agents and desktop assistants, over MCP (below).
+          </>,
+          <>
             Public agents get per-IP and per-session rate limits, daily query and token caps, a platform-wide switch
             and a kill switch.
           </>,
@@ -463,11 +476,105 @@ function Features() {
         }
       />
 
+
+      <Feature
+        id="feature-mcp"
+        eyebrow="MCP"
+        title="MCP both ways: AI tools use Grounded, and agents call approved tools"
+        reverse
+        lead={
+          <p>
+            New in v0.3.0: Grounded speaks the Model Context Protocol in both directions. Both are off until a platform
+            admin turns them on.
+          </p>
+        }
+        bullets={[
+          <>
+            <Strong>Use Grounded from AI tools:</Strong> coding agents, desktop assistants and other MCP clients search
+            knowledge bases and ask agents at <code>/mcp</code>, with an API key that has the MCP scope. Answers come
+            back with citations and claim verdicts, under the same classification, limits, budgets and audit log as the
+            API.
+          </>,
+          <>
+            <Strong>OAuth sign-in</Strong> (experimental): a person can connect a tool by signing in and approving it,
+            instead of pasting a key, and disconnect it later.
+          </>,
+          <>
+            <Strong>Agents call approved tools:</Strong> platform admins register remote MCP servers, read and approve
+            each tool, and set the most sensitive data each server may receive. Editors pick approved tools for an
+            agent.
+          </>,
+          <>
+            <Strong>Tool results are sources:</Strong> a result is treated as untrusted data and cited like a passage,
+            so claim checks cover it too. Every call is bounded, metered and audited.
+          </>,
+        ]}
+        note={
+          <>
+            OAuth sign-in is experimental and may change. Agents reach outside MCP servers over https with a static
+            header; OAuth to outside servers isn&apos;t supported yet.
+          </>
+        }
+        media={
+          <>
+            <Screenshot slot="mcp-tool-source" />
+            <CodeBlock label="Connect an MCP client to Grounded">{mcpExample}</CodeBlock>
+          </>
+        }
+      />
+
+      <section aria-labelledby="feature-health-tracing" className="border-t border-brand-border py-20 sm:py-24">
+        <div className="container-page">
+          <h3 id="feature-health-tracing" className="sr-only">
+            Stored health and tracing
+          </h3>
+          <div className="grid gap-8 lg:grid-cols-2">
+            <MiniFeature
+              id="feature-health"
+              eyebrow="Stored health"
+              title={"Know what's failing, and since when"}
+              body={
+                <>
+                  <p>
+                    Every <Strong>Test</Strong> button stores its result, and the worker re-tests enabled connections,
+                    models and MCP servers every 15 minutes. The scheduled check costs nothing: it reads model and tool
+                    lists and never sends a prompt.
+                  </p>
+                  <p>
+                    Admin lists show <q>Healthy · 3 minutes ago</q> or <q>Failing · since 2 hours ago</q>, failures
+                    appear under Needs attention on the admin Overview, and an alert fires after 30 minutes.
+                  </p>
+                </>
+              }
+              slot="health-connections"
+            />
+            <MiniFeature
+              id="feature-tracing"
+              eyebrow="Tracing"
+              title="Follow one answer from request to model call"
+              body={
+                <>
+                  <p>
+                    Set <code>OTEL_EXPORTER_OTLP_ENDPOINT</code> and Grounded sends OpenTelemetry traces to Tempo,
+                    Jaeger or a collector. One answer is one trace across HTTP, retrieval, model calls, SystemOne
+                    checks, MCP tool calls and background jobs.
+                  </p>
+                  <p>
+                    Spans hold IDs, names, counts and timings, never questions, answers, passages or tool data. Off
+                    unless configured.
+                  </p>
+                </>
+              }
+              slot="tracing-trace"
+            />
+          </div>
+        </div>
+      </section>
+
       <Feature
         id="feature-kubernetes"
         eyebrow="Operations"
         title="Built for Kubernetes"
-        reverse
         lead={
           <p>
             Grounded is one Go binary with the React UI embedded, run as an API and a worker. PostgreSQL with pgvector
@@ -478,7 +585,7 @@ function Features() {
           <>
             A <Strong>Kustomize base</Strong> with probes, PodDisruptionBudgets, restricted security contexts and
             default-deny NetworkPolicies, optional components (Postgres or CloudNativePG, Valkey, backups, Ingress,
-            Tika, OCR, monitoring) and two example overlays.
+            Tika, OCR, monitoring, tracing) and two example overlays.
           </>,
           <>
             <Strong>Signed images:</Strong> multi-arch (amd64 and arm64), distroless and non-root, built only in CI,
@@ -489,8 +596,9 @@ function Features() {
             Encryption keys rotate without downtime too.
           </>,
           <>
-            <Strong>Observability:</Strong> Prometheus metrics, five Grafana dashboards, 23 alerts with runbooks and
-            SLO burn-rate rules. <code>grounded doctor</code> checks the configuration and every dependency.
+            <Strong>Observability:</Strong> Prometheus metrics, five Grafana dashboards, 24 alerts with runbooks and
+            SLO burn-rate rules, and optional OpenTelemetry traces. <code>grounded doctor</code> checks the
+            configuration and every dependency.
           </>,
         ]}
         media={
