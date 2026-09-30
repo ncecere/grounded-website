@@ -268,7 +268,9 @@ function Features() {
         lead={
           <p>
             Answers stream into the chat with numbered citation chips. A chip opens the claim it supports and the
-            passage behind it, and <q>Show source</q> jumps to the passage.
+            passage behind it, and <q>Show source</q> jumps to the passage. New in v0.3.0: answers start sooner, and
+            until the first words the chat says what the agent is doing, such as searching its knowledge or checking the
+            passages.
           </p>
         }
         bullets={[
