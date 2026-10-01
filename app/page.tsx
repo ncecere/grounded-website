@@ -56,8 +56,8 @@ function Hero() {
             </ButtonLink>
           </div>
           <p className="mt-4 max-w-xl text-sm text-brand-subtle">
-            &ldquo;See it running&rdquo; opens the maintainer&apos;s demo instance. It needs a sign-in and isn&apos;t
-            open to everyone; to try Grounded yourself, <TextLink href="#run-it-yourself">run the local demo</TextLink>.
+            &ldquo;See it running&rdquo; opens a public agent on the maintainer&apos;s instance: ask it anything,
+            no sign-in needed. To run Grounded yourself, <TextLink href="#run-it-yourself">start the local demo</TextLink>.
           </p>
         </div>
         <Screenshot slot="chat-answer-with-claims" priority caption={false} />

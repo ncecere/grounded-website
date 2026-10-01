@@ -6,7 +6,8 @@ export const site = {
     "Grounded is a self-hosted, open-source (MIT) platform where teams turn their documents and websites into knowledge bases and publish agents that answer only from them, with citations.",
   docsUrl: "https://docs.grounded.bitop.dev",
   repoUrl: "https://github.com/ncecere/grounded",
-  demoUrl: "https://kb.bitop.dev",
+  // A public agent on the maintainer's instance: anyone can chat with it, without signing in.
+  demoUrl: "https://kb.bitop.dev/a/demo/grounded-agent",
   version: "v0.3.0",
   // The release day of `version` (the footer and the sitemap show it).
   releaseDate: "2026-09-30",
