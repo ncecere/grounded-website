@@ -10,7 +10,10 @@ export const metadata: Metadata = {
   description: site.description,
   applicationName: site.name,
   alternates: { canonical: "/" },
-  icons: { icon: [{ url: "/favicon.svg", type: "image/svg+xml" }] },
+  icons: {
+    icon: [{ url: "/favicon.ico", sizes: "16x16 32x32 48x48" }, { url: "/favicon.svg", type: "image/svg+xml" }],
+    apple: "/apple-touch-icon.png",
+  },
   openGraph: {
     type: "website",
     url: "/",

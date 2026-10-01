@@ -25,7 +25,8 @@ const svg = `
   <rect width="${W}" height="${H}" fill="url(#glow)"/>
   <g transform="translate(80 88)">
     <rect width="64" height="64" rx="14" fill="#4b4fd6"/>
-    <rect x="37" y="37" width="17" height="17" rx="4" fill="#2dd4bf"/>
+    <path d="M24.5 16.5H17.5V47.5H24.5M39.5 16.5H46.5V47.5H39.5" fill="none" stroke="#fff" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M24.6 32.6L29.6 37.4L39.4 27" fill="none" stroke="#6ee7b7" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
     <text x="88" y="46" font-family="${font}" font-size="44" font-weight="600" fill="#eceef2">Grounded</text>
   </g>
   <text font-family="${font}" font-weight="600" fill="#eceef2" font-size="${hasShot ? 50 : 60}" letter-spacing="-1">

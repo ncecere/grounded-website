@@ -4,9 +4,11 @@ import { site } from "@/lib/site";
 /** The Grounded mark, as the app's sidebar draws it: a primary tile with a highlight accent. Decorative. */
 export function LogoMark({ className = "size-6" }: { className?: string }) {
   return (
-    <svg viewBox="0 0 32 32" className={className} aria-hidden="true" focusable="false">
-      <rect width="32" height="32" rx="7" fill="var(--grounded-primary)" />
-      <rect x="18" y="18" width="8" height="8" rx="2" fill="var(--grounded-highlight)" />
+    // The "Cited" mark: a citation's brackets around a check (the heavier small-size drawing, for 20–32 px).
+    <svg viewBox="0 0 64 64" className={className} aria-hidden="true" focusable="false">
+      <rect width="64" height="64" rx="14" fill="var(--grounded-primary)" />
+      <path d="M22 15H15.5V49H22M42 15H48.5V49H42" fill="none" stroke="#fff" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M23.8 32.4L29.4 38L40.2 26.6" fill="none" stroke="#6ee7b7" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round" />
     </svg>
   );
 }
