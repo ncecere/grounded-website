@@ -58,5 +58,25 @@
     "src": "/images/tracing-trace.webp",
     "width": 1440,
     "height": 900
+  },
+  "source-viewer": {
+    "src": "/images/source-viewer.webp",
+    "width": 1440,
+    "height": 900
+  },
+  "gaps-topic": {
+    "src": "/images/gaps-topic.webp",
+    "width": 1440,
+    "height": 960
+  },
+  "rerank-try-it": {
+    "src": "/images/rerank-try-it.webp",
+    "width": 1440,
+    "height": 900
+  },
+  "saved-answers": {
+    "src": "/images/saved-answers.webp",
+    "width": 1440,
+    "height": 900
   }
 }

@@ -53,5 +53,25 @@
     "alt": "One Grounded answer as a trace in Jaeger: the HTTP request, the answer, retrieval, two model calls, an MCP tool call with its HTTP exchanges, and SystemOne checks, each with its duration.",
     "caption": "One answer, one trace: retrieval, model calls, checks and tool calls.",
     "file": "tracing-answer-trace"
+  },
+  "source-viewer": {
+    "alt": "The source viewer beside a help desk answer about connecting to the VPN: \"Source 1 of 2\", the four claims citing it, each marked Supported, and the document's text with the cited passage highlighted. Under the answer, the source cards read \"Supports 4 claims\" and \"Supports 3 claims\".",
+    "caption": "A citation opens its passage in context, beside the answer, with the claims that cite it.",
+    "file": "chat-source-viewer"
+  },
+  "gaps-topic": {
+    "alt": "A team's gap report topic, \"Campus parking permits\": 3 questions from 3 people, failed as Refused and Thumbs-down (Missing sources), one shared question with Add to evaluations, and the actions Dismiss, Mark fixed and Add a source.",
+    "caption": "The gap report: questions agents couldn't answer, grouped into topics once three people asked.",
+    "file": "gaps-topic"
+  },
+  "rerank-try-it": {
+    "alt": "A knowledge base's Try it with Rerank on: \"Reranked the best 40 passages in 452 ms\", and each result with its rerank score beside the usual score and its vector and keyword ranks.",
+    "caption": "Try it shows each passage's rerank score, and can switch reranking off to compare.",
+    "file": "kb-try-it-rerank"
+  },
+  "saved-answers": {
+    "alt": "A public agent's Settings, Saved answers: Reuse answers on, near-identical questions off, reuse an answer for 24 hours, \"1 saved answer now, reused once so far\", and Clear saved answers.",
+    "caption": "Saved answers: on by default for public agents, per agent, invisible to people.",
+    "file": "agent-settings-saved-answers"
   }
 }
