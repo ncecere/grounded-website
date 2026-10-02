@@ -77,7 +77,7 @@ const steps: { icon: ReactNode; title: string; body: string }[] = [
   {
     icon: <Database className="size-5" />,
     title: "Knowledge bases",
-    body: "Sources become passages, searched with hybrid vector and keyword retrieval. Text repeated across a site, such as navigation and footers, is left out of search.",
+    body: "Sources become passages, searched with hybrid vector and keyword retrieval and, optionally, reranked by a cross-encoder. Text repeated across a site, such as navigation and footers, is left out of search.",
   },
   {
     icon: <Bot className="size-5" />,
@@ -254,8 +254,8 @@ function Features() {
           <SectionHeading id="features-title" eyebrow="Features" title="What you get in one install">
             <p>
               Answers people can verify, tests that catch regressions, and the controls a platform team needs to run
-              it for many teams. Everything below is in {site.version}; optional features stay off until an admin
-              turns them on.
+              it for many teams. Everything below is in {site.version}; most optional features stay off until an
+              admin turns them on.
             </p>
           </SectionHeading>
         </div>
@@ -268,9 +268,8 @@ function Features() {
         lead={
           <p>
             Answers stream into the chat with numbered citation chips. A chip opens the claim it supports and the
-            passage behind it, and <q>Show source</q> jumps to the passage. New in v0.3.0: answers start sooner, and
-            until the first words the chat says what the agent is doing, such as searching its knowledge or checking the
-            passages.
+            passage behind it. New in v0.4.0: <q>Show source</q> opens the passage highlighted in its document, beside
+            the answer, with every claim that cites it and its verdict.
           </p>
         }
         bullets={[
@@ -283,7 +282,11 @@ function Features() {
             answer is a claim with one verdict. The OpenAI-compatible API returns the same <code>claims[]</code>.
           </>,
           <>
-            SystemOne can also <Strong>re-rank passages</Strong>, drop prompt injections and spot questions outside an
+            <Strong>Source cards</Strong> break down the claims citing each source, such as{" "}
+            <q>Supports 3 claims · 1 not supported</q>. Editors can open the whole document.
+          </>,
+          <>
+            SystemOne can also <Strong>judge passages</Strong>, drop prompt injections and spot questions outside an
             agent&apos;s scope.
           </>,
           <>Conversations are private to the person who had them, who can export or delete them.</>,
@@ -294,8 +297,91 @@ function Features() {
             one, answers still cite their passages, but claims aren&apos;t checked one by one.
           </>
         }
-        media={<VerdictCard />}
+        media={
+          <>
+            <Screenshot slot="source-viewer" />
+            <VerdictCard />
+          </>
+        }
       />
+
+      <Feature
+        id="feature-gaps"
+        eyebrow="Gap report"
+        title="See what your agents can't answer"
+        reverse
+        lead={
+          <p>
+            New in v0.4.0: questions that got no good answer are grouped into topics, such as <q>Campus parking
+            permits</q>, so a team knows which page to add next.
+          </p>
+        }
+        bullets={[
+          <>
+            A question counts when nothing was found, the agent refused, a claim wasn&apos;t supported, or someone
+            rated the answer down. The agent&apos;s chat model labels each topic in a few words.
+          </>,
+          <>
+            Each topic offers <Strong>Add a source</Strong>, <Strong>Mark fixed</Strong> or <Strong>Dismiss</Strong>,
+            and closes itself once its questions are answered well again.
+          </>,
+          <>
+            <Strong>Private by design:</Strong> a topic shows only once three different people asked, never with who
+            asked. A question&apos;s text shows only if its asker ticked <q>Share this question with the team</q>, and
+            then it can go into an evaluation set in one click.
+          </>,
+          <>Platform admins see counts per team, never the topics.</>,
+        ]}
+        media={<Shots slots={["gaps-topic"]} />}
+      />
+
+      <section aria-labelledby="feature-rerank-cache" className="border-t border-brand-border py-20 sm:py-24">
+        <div className="container-page">
+          <h3 id="feature-rerank-cache" className="sr-only">
+            Reranking and saved answers
+          </h3>
+          <div className="grid gap-8 lg:grid-cols-2">
+            <MiniFeature
+              id="feature-rerank"
+              eyebrow="Reranking"
+              title="The best passages first"
+              body={
+                <>
+                  <p>
+                    New in v0.4.0: choose a cross-encoder rerank model, such as bge-reranker on vLLM, and every search
+                    scores its 40 best candidates against the question in one call and keeps the few that answer it.
+                    SystemOne then judges only those, so answers start sooner.
+                  </p>
+                  <p>
+                    It fails open: a slow or failed call keeps the usual order. Agents can turn it off, and evaluation
+                    runs compare results with and without it.
+                  </p>
+                </>
+              }
+              slot="rerank-try-it"
+            />
+            <MiniFeature
+              id="feature-saved-answers"
+              eyebrow="Saved answers"
+              title="Repeat questions, answered at once"
+              body={
+                <>
+                  <p>
+                    New in v0.4.0: when someone asks a question an agent answered recently, under the same version,
+                    knowledge and settings, they get the saved answer at once, at no model cost, with the same
+                    citations and verdicts.
+                  </p>
+                  <p>
+                    On by default for public agents, set per agent. Only clean first questions are saved, and a
+                    thumbs-down, a change or the expiry retires them.
+                  </p>
+                </>
+              }
+              slot="saved-answers"
+            />
+          </div>
+        </div>
+      </section>
 
       <Feature
         id="feature-evaluations"
@@ -351,6 +437,8 @@ function Features() {
           <>
             <Strong>Moderation</Strong> is required for public agents and fails closed. Use a{" "}
             <code>/moderations</code> endpoint, a guardrail model, a chat model as a classifier, or a SystemOne model.
+            New in v0.4.0, public answers stream <Strong>paragraph by paragraph</Strong>, each shown only once it
+            passed, so visitors see the first words in seconds and nothing unchecked.
           </>,
           <>
             <Strong>Retention and legal holds:</Strong> periods are configurable per kind of record, a dry run shows
@@ -451,7 +539,8 @@ function Features() {
         bullets={[
           <>
             <Strong>Web chat</Strong> in the Grounded UI, with conversation history, feedback on answers, and a
-            directory of agents published to everyone who signs in.
+            directory of agents published to everyone who signs in. Public pages and the widget have the same
+            feedback.
           </>,
           <>
             An <Strong>embeddable widget</Strong> (an iframe) with publishable keys, allowed origins and optional
@@ -486,7 +575,7 @@ function Features() {
         reverse
         lead={
           <p>
-            New in v0.3.0: Grounded speaks the Model Context Protocol in both directions. Both are off until a platform
+            Since v0.3.0, Grounded speaks the Model Context Protocol in both directions. Both are off until a platform
             admin turns them on.
           </p>
         }
