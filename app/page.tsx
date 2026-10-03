@@ -286,6 +286,10 @@ function Features() {
             <q>Supports 3 claims · 1 not supported</q>. Editors can open the whole document.
           </>,
           <>
+            New in v0.4.1: <Strong>follow-up suggestions.</Strong> After an answer with citations, up to three
+            questions its sources can answer appear under it; choosing one asks it.
+          </>,
+          <>
             SystemOne can also <Strong>judge passages</Strong>, drop prompt injections and spot questions outside an
             agent&apos;s scope.
           </>,
