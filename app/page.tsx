@@ -294,6 +294,10 @@ function Features() {
             agent&apos;s scope.
           </>,
           <>Conversations are private to the person who had them, who can export or delete them.</>,
+          <>
+            New in v0.4.2: <Strong>dark mode.</Strong> The app follows the device&apos;s light or dark setting, or a
+            choice in the account menu; public pages and the widget follow the visitor&apos;s device.
+          </>,
         ]}
         note={
           <>
@@ -359,6 +363,10 @@ function Features() {
                   <p>
                     It fails open: a slow or failed call keeps the usual order. Agents can turn it off, and evaluation
                     runs compare results with and without it.
+                  </p>
+                  <p>
+                    New in v0.4.2: reranking has its own admin page, with a setup guide that walks from the server to
+                    the model, its status and a before-and-after test.
                   </p>
                 </>
               }
