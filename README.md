@@ -2,7 +2,7 @@
 
 The landing page for [Grounded](https://github.com/ncecere/grounded), an open-source (MIT), multi-tenant RAG and agents platform: teams turn their documents and websites into knowledge bases and publish agents that answer only from them, with citations. The site is served at https://grounded.bitop.dev; the documentation lives in its own repository and site, https://docs.grounded.bitop.dev.
 
-It's one long page plus a 404 page, with no pricing, sign-up, forms, cookies, tracking or third-party requests. The text describes Grounded **v0.4.1** and is checked against that release's README, changelog and design notes. `lib/site.ts` holds the version, the release day (set it when the release is tagged; the footer shows it) and the release links.
+It's one long page plus a 404 page, with no pricing, sign-up, forms, cookies, tracking or third-party requests. The text describes Grounded **v0.4.2** and is checked against that release's README, changelog and design notes. `lib/site.ts` holds the version, the release day (set it when the release is tagged; the footer shows it) and the release links.
 
 ## Stack
 

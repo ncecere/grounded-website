@@ -227,7 +227,7 @@ const apiExample = `curl https://grounded.example.org/v1/chat/completions \\
 
 const kustomizeExample = `# kustomization.yaml in your own overlay repository
 resources:
-  - https://github.com/ncecere/grounded//deploy/kubernetes/base?ref=v0.4.1
+  - https://github.com/ncecere/grounded//deploy/kubernetes/base?ref=v0.4.2
 images:
   - name: ghcr.io/ncecere/grounded
     digest: sha256:<digest from the release notes>`;
