@@ -309,6 +309,7 @@ function Features() {
           <>
             <Screenshot slot="source-viewer" />
             <VerdictCard />
+            <Screenshot slot="dark-mode" />
           </>
         }
       />

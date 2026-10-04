@@ -1,10 +1,10 @@
 {
   "chat-answer-with-claims": {
-    "alt": "A help desk agent's answer in the Grounded chat: numbered steps for resetting a password, each with a citation chip, an open claim card reading \"Claim supported by this source\" above the passage it came from, and a \"5 of 6 claims supported\" summary above the sources.",
+    "alt": "A help desk agent's answer in the Grounded chat: numbered steps for resetting a password, each with a citation chip, an open claim card reading \"Claim supported by this source\" above the passage it came from, and a \"5 of 6 claims supported\" summary below the answer.",
     "caption": "An answer with numbered citations. With SystemOne citation checks on, each claim shows its verdict."
   },
   "agent-build": {
-    "alt": "The agent editor's Build tab: the agent's instructions, its model, knowledge bases and tools, and a Try it panel with an answer that used a tool",
+    "alt": "The agent editor's Build tab: the agent's instructions and its model, knowledge, tools and other sections, and a Try it panel with an answer that used a tool, shown as \"Used Check outage\"",
     "caption": "The agent editor: build a draft, try it, then publish an immutable version.",
     "file": "agent-editor-build-try-it"
   },
@@ -18,11 +18,11 @@
     "caption": "The team Overview: each evaluation set's latest score and trend, and spend against the budget for owners and admins."
   },
   "admin-overview-features": {
-    "alt": "The platform admin Overview with Needs attention and its Features card, listing the state of evaluations, the MCP server, OAuth sign-in for MCP clients (experimental), cost tracking, OCR, SSO groups, SystemOne, public access and maintenance",
+    "alt": "The platform admin Overview with Needs attention and its Features card, listing the state of evaluations, the MCP server, OAuth sign-in for MCP clients (experimental), saved answers, cost tracking, OCR, SSO groups, SystemOne, reranking, public access and maintenance, each with a link to where it is set",
     "caption": "Admin Overview: every optional feature's state, and where to set it."
   },
   "costs-overview": {
-    "alt": "Admin Costs overview: spend, tokens, requests and unpriced usage, and a daily spend chart by kind, including MCP tools",
+    "alt": "Admin Costs overview: spend, tokens, requests and unpriced usage, and a daily spend chart by kind: chat, embedding and rerank, SystemOne, moderation, OCR and MCP tools",
     "caption": "Costs: spend per team, agent and model, with monthly budgets.",
     "file": "admin-costs-overview"
   },
@@ -73,5 +73,10 @@
     "alt": "A public agent's Settings, Saved answers: Reuse answers on, near-identical questions off, reuse an answer for 24 hours, \"1 saved answer now, reused once so far\", and Clear saved answers.",
     "caption": "Saved answers: on by default for public agents, per agent, invisible to people.",
     "file": "agent-settings-saved-answers"
+  },
+  "dark-mode": {
+    "alt": "The same kind of help desk answer in Grounded's dark mode: the steps with citation chips, the claims summary, two source cards and follow-up questions, in light text on a dark background.",
+    "caption": "Dark mode follows the device, or a choice in the account menu.",
+    "file": "dark-chat-answer"
   }
 }

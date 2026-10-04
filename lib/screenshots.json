@@ -22,7 +22,7 @@
   "admin-overview-features": {
     "src": "/images/admin-overview-features.webp",
     "width": 1440,
-    "height": 1848
+    "height": 1940
   },
   "costs-overview": {
     "src": "/images/costs-overview.webp",
@@ -76,6 +76,11 @@
   },
   "saved-answers": {
     "src": "/images/saved-answers.webp",
+    "width": 1440,
+    "height": 900
+  },
+  "dark-mode": {
+    "src": "/images/dark-mode.webp",
     "width": 1440,
     "height": 900
   }
