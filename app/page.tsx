@@ -227,7 +227,7 @@ const apiExample = `curl https://grounded.example.org/v1/chat/completions \\
 
 const kustomizeExample = `# kustomization.yaml in your own overlay repository
 resources:
-  - https://github.com/ncecere/grounded//deploy/kubernetes/base?ref=v0.4.4
+  - https://github.com/ncecere/grounded//deploy/kubernetes/base?ref=v0.5.0
 images:
   - name: ghcr.io/ncecere/grounded
     digest: sha256:<digest from the release notes>`;
@@ -425,6 +425,11 @@ function Features() {
           <>
             The team Overview shows each set&apos;s latest score and trend, and the Evaluations page filters to
             regressions.
+          </>,
+          <>
+            New in v0.5.0: <Strong>preview new indexing settings</Strong> before switching. A platform admin builds a
+            knowledge base&apos;s new index beside the current one, the sets run on both, and the comparison shows
+            what got better and worse. Then switch, or discard.
           </>,
         ]}
         note={<>Evaluations test retrieval and answers, not an agent&apos;s tools beyond knowledge-base search.</>}
