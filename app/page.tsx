@@ -227,7 +227,7 @@ const apiExample = `curl https://grounded.example.org/v1/chat/completions \\
 
 const kustomizeExample = `# kustomization.yaml in your own overlay repository
 resources:
-  - https://github.com/ncecere/grounded//deploy/kubernetes/base?ref=v0.5.0
+  - https://github.com/ncecere/grounded//deploy/kubernetes/base?ref=v0.6.0
 images:
   - name: ghcr.io/ncecere/grounded
     digest: sha256:<digest from the release notes>`;
@@ -297,6 +297,12 @@ function Features() {
           <>
             New in v0.4.2: <Strong>dark mode.</Strong> The app follows the device&apos;s light or dark setting, or a
             choice in the account menu; public pages and the widget follow the visitor&apos;s device.
+          </>,
+          <>
+            New in v0.6.0: <Strong>share a conversation.</Strong> A link to a read-only snapshot of your own
+            conversation, for the people who can chat with the agent; you can revoke it any time, and it never shows
+            feedback or reasoning. A <Strong>router agent</Strong> is a front door that sends each question to the best
+            agent the person could chat with themselves, and says which agent answered.
           </>,
         ]}
         note={
@@ -471,6 +477,11 @@ function Features() {
             An <Strong>audit log</Strong> of every change, and an access log. Team analytics never contain message
             content.
           </>,
+          <>
+            New in v0.6.0: people can <Strong>ask for a team</Strong> in the app and platform admins approve or decline
+            it (optional, off until you turn it on), and a new agent can <Strong>start from a template</Strong>: how an
+            agent answers, never what it answers from or who may use it.
+          </>,
         ]}
         media={<Shots slots={["admin-overview-features"]} />}
       />
@@ -575,6 +586,11 @@ function Features() {
           <>
             Public agents get per-IP and per-session rate limits, daily query and token caps, a platform-wide switch
             and a kill switch.
+          </>,
+          <>
+            New in v0.6.0: <Strong>webhooks.</Strong> Signed, retried events (a source synced or failed, an agent
+            published, an answer rated) go to hosts a platform admin approved. They carry IDs and summaries, never
+            transcripts or document text.
           </>,
         ]}
         media={
