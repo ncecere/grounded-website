@@ -1,6 +1,6 @@
 # Build the static export once on the build platform (the output is the same
 # for every architecture), then copy it into a multi-arch nginx image.
-FROM --platform=$BUILDPLATFORM docker.io/library/node:22.23.3-alpine@sha256:0a7108bf6c7bf5de370ffb1a3ed6be93d405b43ff159f681a8d18c0e2bc2e402 AS build
+FROM --platform=$BUILDPLATFORM docker.io/library/node:26.12.0-alpine@sha256:6f08a523443ddedf52941874c203475b0ad503e859ad70cb26ab8be9a517dbd5 AS build
 WORKDIR /src
 ENV NEXT_TELEMETRY_DISABLED=1
 COPY package.json package-lock.json ./
@@ -8,7 +8,7 @@ RUN npm ci --no-audit --no-fund
 COPY . .
 RUN npm run build
 
-FROM docker.io/library/nginx:1.29.8-alpine@sha256:5616878291a2eed594aee8db4dade5878cf7edcb475e59193904b198d9b830de
+FROM docker.io/library/nginx:1.31.7-alpine@sha256:892bb2152464f0c5d8972593a5f5afaf8054552580b699d95f8ff4af08c2d33d
 
 LABEL org.opencontainers.image.source="https://github.com/ncecere/grounded-website" \
       org.opencontainers.image.description="The Grounded website (grounded.bitop.dev)" \
