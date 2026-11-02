@@ -4,11 +4,15 @@ import { Screenshot, type SlotName } from "@/components/Screenshot";
 import { ButtonLink, CheckList, CodeBlock, Eyebrow, SectionHeading, Strong, TextLink } from "@/components/ui";
 import { site } from "@/lib/site";
 
+/** A page on the docs site, by its path under /docs. */
+const docs = (path: string) => `${site.docsUrl}/docs/${path}`;
+
 export default function Home() {
   return (
     <>
       <Hero />
       <HowItWorks />
+      <WhatsNew />
       <Features />
       <RunItYourself />
       <ProjectStatus />
@@ -77,7 +81,7 @@ const steps: { icon: ReactNode; title: string; body: string }[] = [
   {
     icon: <Database className="size-5" />,
     title: "Knowledge bases",
-    body: "Sources become passages, searched with hybrid vector and keyword retrieval and, optionally, reranked by a cross-encoder. Text repeated across a site, such as navigation and footers, is left out of search.",
+    body: "Sources become passages, searched with hybrid vector and keyword retrieval and, optionally, reranked by a cross-encoder. Text repeated across a site, such as navigation and footers, is left out of search, and near-duplicates of it too if you choose.",
   },
   {
     icon: <Bot className="size-5" />,
@@ -118,6 +122,102 @@ function HowItWorks() {
         <div className="mx-auto mt-14 max-w-5xl">
           <Screenshot slot="agent-build" />
         </div>
+      </div>
+    </section>
+  );
+}
+
+/* ----------------------------------------------------------- What's new */
+
+// One card per theme since `site.whatsNewSince`. Replace the cards at each release; don't add one per release.
+const whatsNew: { title: string; release: string; body: ReactNode; links: { href: string; label: string }[] }[] = [
+  {
+    title: "Better indexing, opt-in",
+    release: "v0.7.0",
+    body: (
+      <>
+        Five new indexing options, each tried on a knowledge base with the index preview before anything switches:
+        chunkers that keep tables whole or keep labelled sections apart, parent sections, near-duplicate repeated
+        blocks and contextual chunks. All are off by default, and none has been measured on a real knowledge base yet.
+      </>
+    ),
+    links: [
+      { href: docs("administration/embedding-profiles"), label: "Embedding profiles" },
+      { href: docs("administration/contextual-chunks"), label: "Contextual chunks" },
+    ],
+  },
+  {
+    title: "Content health reports",
+    release: "v0.7.0",
+    body: (
+      <>
+        Editors can ask for a read-only report of documents not processed in a long time, links the last crawl saw
+        fail, the same file in two sources, documents with no retained citation evidence and documents that failed to
+        parse. Off until a platform admin turns it on.
+      </>
+    ),
+    links: [
+      { href: docs("using/editors/content-health"), label: "For editors" },
+      { href: docs("administration/content-health"), label: "For admins" },
+    ],
+  },
+  {
+    title: "For people and integrations",
+    release: "v0.6.3",
+    body: (
+      <>
+        A wrong method on a known path gets <code>405</code> and a badly formatted value an error that names its field; the
+        OpenAI-compatible endpoint takes text-only messages. Names can&apos;t hide invisible characters, two chat tabs
+        on one conversation stay in step, a team request can&apos;t be approved for a suspended owner, and webhooks to
+        a withdrawn destination stay off.
+      </>
+    ),
+    links: [{ href: docs("releases/v0-6-3"), label: "v0.6.3 release notes" }],
+  },
+  {
+    title: "Security and operations",
+    release: "v0.6.2 and v0.6.3",
+    body: (
+      <>
+        A security patch for dependencies found in fresh source and image scans (Go 1.26.10 and package updates). The
+        OCR sidecar has no outbound network access, not even DNS, and PostgreSQL must now be built with ICU.
+      </>
+    ),
+    links: [
+      { href: docs("releases/v0-6-2"), label: "v0.6.2 release notes" },
+      { href: docs("self-hosting/upgrades"), label: "Upgrades" },
+    ],
+  },
+];
+
+function WhatsNew() {
+  return (
+    <section aria-labelledby="whats-new" className="scroll-mt-16 border-t border-brand-border py-20 sm:py-24">
+      <div className="container-page">
+        <SectionHeading id="whats-new" eyebrow={`New since ${site.whatsNewSince}`} title="Better knowledge in, and a check on what's there">
+          <p>
+            {site.version} adds opt-in indexing settings and content health reports, after a security patch and a
+            release of fixes. Here they are by theme; the{" "}
+            <TextLink href={site.releaseNotesUrl}>{site.version} release notes</TextLink> have the details and the
+            upgrade steps.
+          </p>
+        </SectionHeading>
+        <ul className="mt-12 grid gap-4 sm:grid-cols-2">
+          {whatsNew.map((item) => (
+            <li key={item.title} className="flex flex-col rounded-card bg-brand-surface p-6 shadow-brand-1">
+              <span className="font-mono text-xs text-brand-subtle">{item.release}</span>
+              <h3 className="mt-2 text-lg font-semibold text-brand-text">{item.title}</h3>
+              <p className="mt-2 flex-1 text-sm leading-relaxed text-brand-muted">{item.body}</p>
+              <p className="mt-4 flex flex-wrap gap-x-4 gap-y-1 text-sm">
+                {item.links.map((link) => (
+                  <TextLink key={link.href} href={link.href}>
+                    {link.label}
+                  </TextLink>
+                ))}
+              </p>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );
@@ -227,7 +327,7 @@ const apiExample = `curl https://grounded.example.org/v1/chat/completions \\
 
 const kustomizeExample = `# kustomization.yaml in your own overlay repository
 resources:
-  - https://github.com/ncecere/grounded//deploy/kubernetes/base?ref=v0.6.1
+  - https://github.com/ncecere/grounded//deploy/kubernetes/base?ref=${site.version}
 images:
   - name: ghcr.io/ncecere/grounded
     digest: sha256:<digest from the release notes>`;
@@ -268,8 +368,8 @@ function Features() {
         lead={
           <p>
             Answers stream into the chat with numbered citation chips. A chip opens the claim it supports and the
-            passage behind it. New in v0.4.0: <q>Show source</q> opens the passage highlighted in its document, beside
-            the answer, with every claim that cites it and its verdict.
+            passage behind it. <q>Show source</q> opens the passage highlighted in its document, beside the answer,
+            with every claim that cites it and its verdict.
           </p>
         }
         bullets={[
@@ -286,7 +386,7 @@ function Features() {
             <q>Supports 3 claims · 1 not supported</q>. Editors can open the whole document.
           </>,
           <>
-            New in v0.4.1: <Strong>follow-up suggestions.</Strong> After an answer with citations, up to three
+            <Strong>Follow-up suggestions:</Strong> after an answer with citations, up to three
             questions its sources can answer appear under it; choosing one asks it.
           </>,
           <>
@@ -295,13 +395,15 @@ function Features() {
           </>,
           <>Conversations are private to the person who had them, who can export or delete them.</>,
           <>
-            New in v0.4.2: <Strong>dark mode.</Strong> The app follows the device&apos;s light or dark setting, or a
+            <Strong>Dark mode:</Strong> the app follows the device&apos;s light or dark setting, or a
             choice in the account menu; public pages and the widget follow the visitor&apos;s device.
           </>,
           <>
-            New in v0.6.0: <Strong>share a conversation.</Strong> A link to a read-only snapshot of your own
-            conversation, for the people who can chat with the agent; you can revoke it any time, and it never shows
-            feedback or reasoning. A <Strong>router agent</Strong> is a front door that sends each question to the best
+            <Strong>Share a conversation:</Strong> a link to a read-only snapshot of your own conversation, for the
+            people who can chat with the agent; you can revoke it any time, and it never shows feedback or reasoning.
+          </>,
+          <>
+            A <Strong>router agent</Strong> is a front door that sends each question to the best
             agent the person could chat with themselves, and says which agent answered.
           </>,
         ]}
@@ -315,20 +417,19 @@ function Features() {
           <>
             <Screenshot slot="source-viewer" />
             <VerdictCard />
-            <Screenshot slot="dark-mode" />
           </>
         }
       />
 
       <Feature
         id="feature-gaps"
-        eyebrow="Gap report"
-        title="See what your agents can't answer"
+        eyebrow="Gap report and content health"
+        title="See what your agents can't answer, and which documents need care"
         reverse
         lead={
           <p>
-            New in v0.4.0: questions that got no good answer are grouped into topics, such as <q>Campus parking
-            permits</q>, so a team knows which page to add next.
+            Questions that got no good answer are grouped into topics, such as <q>Campus parking permits</q>, so a team
+            knows which page to add next. A content health report points at documents that look neglected or broken.
           </p>
         }
         bullets={[
@@ -346,8 +447,19 @@ function Features() {
             then it can go into an evaluation set in one click.
           </>,
           <>Platform admins see counts per team, never the topics.</>,
+          <>
+            <Strong>Content health reports</Strong> list documents not processed in a long time, links the last crawl
+            saw fail, the same file in two sources, documents with no retained citation evidence, and documents that
+            failed to parse. Each signal says what it doesn&apos;t mean, and one that can&apos;t be measured shows as
+            unavailable, not as zero.
+          </>,
+          <>
+            A report is read-only: it fetches nothing, calls no model and changes nothing. Editors, admins and owners
+            ask for one once a platform admin turns reports on. Neither the platform admin role nor break-glass gives
+            access to them.
+          </>,
         ]}
-        media={<Shots slots={["gaps-topic"]} />}
+        media={<Shots slots={["gaps-topic", "content-health-report"]} />}
       />
 
       <section aria-labelledby="feature-rerank-cache" className="border-t border-brand-border py-20 sm:py-24">
@@ -363,7 +475,7 @@ function Features() {
               body={
                 <>
                   <p>
-                    New in v0.4.0: choose a cross-encoder rerank model, such as bge-reranker on vLLM, and every search
+                    Choose a cross-encoder rerank model, such as bge-reranker on vLLM, and every search
                     scores its 40 best candidates against the question in one call and keeps the few that answer it.
                     SystemOne then judges only those, so answers start sooner.
                   </p>
@@ -372,8 +484,8 @@ function Features() {
                     runs compare results with and without it.
                   </p>
                   <p>
-                    New in v0.4.2: reranking has its own admin page, with a setup guide that walks from the server to
-                    the model, its status and a before-and-after test.
+                    Reranking has its own admin page, with a setup guide that walks from the server to the model, its
+                    status and a before-and-after test.
                   </p>
                 </>
               }
@@ -386,7 +498,7 @@ function Features() {
               body={
                 <>
                   <p>
-                    New in v0.4.0: when someone asks a question an agent answered recently, under the same version,
+                    When someone asks a question an agent answered recently, under the same version,
                     knowledge and settings, they get the saved answer at once, at no model cost, with the same
                     citations and verdicts.
                   </p>
@@ -401,6 +513,49 @@ function Features() {
           </div>
         </div>
       </section>
+
+      <Feature
+        id="feature-indexing"
+        eyebrow="Indexing"
+        title="Try new indexing settings before you switch"
+        lead={
+          <p>
+            How documents are cut into passages decides what search can find. A platform admin can build a knowledge
+            base&apos;s new index beside the current one, run the team&apos;s evaluation sets on both, and compare
+            before switching. Then switch, and switch back within a grace period if needed, or discard.
+          </p>
+        }
+        bullets={[
+          <>
+            <Strong>Chunkers:</Strong> besides the standard one and <q>Merge short sections</q>, <q>Keep tables
+            whole</q> keeps a table that fits in one passage and cuts a longer one between rows, repeating its caption
+            and header row in every piece. <q>Structural boundaries</q> never merges across a heading, and a bold label
+            above a list starts a new passage.
+          </>,
+          <>
+            <Strong>Parent sections:</Strong> search still ranks small passages, and the agent&apos;s model is given
+            the section around each match. Citations keep pointing at the matched passage.
+          </>,
+          <>
+            <Strong>Near-duplicate repeated blocks:</Strong> menus and footers that differ only by a highlighted item
+            or a date count as one repeated block, and are left out of search.
+          </>,
+          <>
+            <Strong>Contextual chunks:</Strong> for a source a platform admin opts in, a chat model writes a short note
+            on where each section sits in its document, added only to what is embedded. Passages, keyword search and
+            citations don&apos;t change. It needs explicit call, token and price limits, and an estimate makes no
+            model call.
+          </>,
+          <>Merged table cells in HTML and Word documents now keep their columns, whichever chunker is used.</>,
+        ]}
+        note={
+          <>
+            All of these are off by default. They&apos;ve been tested with fake models and test sites, not measured on
+            a real knowledge base: preview each on your own and decide by the comparison.
+          </>
+        }
+        media={<Shots slots={["admin-index-preview-comparison"]} />}
+      />
 
       <Feature
         id="feature-evaluations"
@@ -433,13 +588,12 @@ function Features() {
             regressions.
           </>,
           <>
-            New in v0.5.0: <Strong>preview new indexing settings</Strong> before switching. A platform admin builds a
-            knowledge base&apos;s new index beside the current one, the sets run on both, and the comparison shows
-            what got better and worse. Then switch, or discard.
+            The same sets judge an <Strong>index preview</Strong> against the current index before a platform admin
+            switches it (above).
           </>,
         ]}
         note={<>Evaluations test retrieval and answers, not an agent&apos;s tools beyond knowledge-base search.</>}
-        media={<Shots slots={["evaluations-runs", "team-overview-quality-and-spend"]} />}
+        media={<Shots slots={["evaluations-runs"]} />}
       />
 
       <Feature
@@ -461,7 +615,7 @@ function Features() {
           <>
             <Strong>Moderation</Strong> is required for public agents and fails closed. Use a{" "}
             <code>/moderations</code> endpoint, a guardrail model, a chat model as a classifier, or a SystemOne model.
-            New in v0.4.0, public answers stream <Strong>paragraph by paragraph</Strong>, each shown only once it
+            Public answers stream <Strong>paragraph by paragraph</Strong>, each shown only once it
             passed, so visitors see the first words in seconds and nothing unchecked.
           </>,
           <>
@@ -478,7 +632,7 @@ function Features() {
             content.
           </>,
           <>
-            New in v0.6.0: people can <Strong>ask for a team</Strong> in the app and platform admins approve or decline
+            People can <Strong>ask for a team</Strong> in the app and platform admins approve or decline
             it (optional, off until you turn it on), and a new agent can <Strong>start from a template</Strong>: how an
             agent answers, never what it answers from or who may use it.
           </>,
@@ -532,7 +686,8 @@ function Features() {
                   <p>
                     Only pages without a text layer are read, and PNG, JPEG and single-page TIFF uploads become
                     one-page documents. OCR is bounded per document, per worker and per team per day, and can be
-                    turned off per source.
+                    turned off per source. The Tesseract sidecar can&apos;t open any outbound connection, not even
+                    for DNS.
                   </p>
                 </>
               }
@@ -588,7 +743,7 @@ function Features() {
             and a kill switch.
           </>,
           <>
-            New in v0.6.0: <Strong>webhooks.</Strong> Signed, retried events (a source synced or failed, an agent
+            <Strong>Webhooks:</Strong> signed, retried events (a source synced or failed, an agent
             published, an answer rated) go to hosts a platform admin approved. They carry IDs and summaries, never
             transcripts or document text.
           </>,
@@ -609,7 +764,7 @@ function Features() {
         reverse
         lead={
           <p>
-            Since v0.3.0, Grounded speaks the Model Context Protocol in both directions. Both are off until a platform
+            Grounded speaks the Model Context Protocol in both directions. Both are off until a platform
             admin turns them on.
           </p>
         }
@@ -772,7 +927,7 @@ docker compose -f compose.demo.yaml up --build     # or: make demo`;
 
 const requirements = [
   "Kubernetes 1.30 or later",
-  "PostgreSQL 17 with pgvector 0.8 or later",
+  "PostgreSQL 17 built with ICU, with pgvector 0.8 or later",
   "Valkey or Redis 7 or later",
   "S3-compatible object storage",
   "An OIDC identity provider",
@@ -860,7 +1015,9 @@ function ProjectStatus() {
           </StatusCard>
         </dl>
         <p className="mt-8 text-brand-muted">
-          Read the <TextLink href={site.releaseNotesUrl}>{site.version} release notes</TextLink> and the{" "}
+          Next on the roadmap: measuring the opt-in indexing settings on a real knowledge base, then v0.8.0, to make
+          Grounded easier for other organisations to adopt (a Helm chart and configuration as code). Read the{" "}
+          <TextLink href={site.releaseNotesUrl}>{site.version} release notes</TextLink> and the{" "}
           <TextLink href={site.roadmapUrl}>roadmap</TextLink>.
         </p>
       </div>

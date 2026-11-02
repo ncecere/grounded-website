@@ -1,41 +1,41 @@
 {
   "chat-answer-with-claims": {
-    "alt": "A help desk agent's answer in the Grounded chat: numbered steps for resetting a password, each with a citation chip, an open claim card reading \"Claim supported by this source\" above the passage it came from, and a \"5 of 6 claims supported\" summary below the answer.",
+    "alt": "A help desk agent's answer in the Grounded chat: numbered steps for resetting a password, each with a citation chip, an open claim card reading \"Claim supported by this source (98% confidence)\" above the passage it came from, and a \"5 of 6 claims supported\" summary below the answer.",
     "caption": "An answer with numbered citations. With SystemOne citation checks on, each claim shows its verdict."
   },
   "agent-build": {
-    "alt": "The agent editor's Build tab: the agent's instructions and its model, knowledge, tools and other sections, and a Try it panel with an answer that used a tool, shown as \"Used Check outage\"",
+    "alt": "The agent editor's Build tab: the agent's instructions and its model, knowledge, tools and other sections, and a Try it panel with an answer that used a tool, shown as \"Used Check outage\", with \"1 of 1 claim supported\" and two follow-up questions.",
     "caption": "The agent editor: build a draft, try it, then publish an immutable version.",
     "file": "agent-editor-build-try-it"
   },
   "evaluations-runs": {
-    "alt": "An evaluation set's runs, with each run's score over time and the questions that failed",
+    "alt": "An evaluation set's runs: three retrieval runs scoring 83%, 100% and 100%, and the score over time with markers where results per search changed.",
     "caption": "An evaluation set: scores over time and what changed between runs.",
     "file": "evaluation-runs-chart"
   },
-  "team-overview-quality-and-spend": {
-    "alt": "A help desk team's Overview in Grounded: counts of data sources, knowledge bases, agents and documents; evaluation scores, with one set down 17 points from the run before; and this month's spend of $0.02 of a $50.00 budget.",
-    "caption": "The team Overview: each evaluation set's latest score and trend, and spend against the budget for owners and admins."
+  "admin-index-preview-comparison": {
+    "alt": "A platform admin's index preview of a knowledge base, Ready to switch, with the buttons Discard preview and Switch to the new index, and under \"Compared with the current index\" its evaluation set's questions, recall, MRR and questions ranked first on the current index and the new one, and what changed: 2 better, 1 worse, 3 the same.",
+    "caption": "An index preview: the knowledge base's evaluation sets run on both indexes, then the admin switches or discards."
   },
   "admin-overview-features": {
-    "alt": "The platform admin Overview with Needs attention and its Features card, listing the state of evaluations, the MCP server, OAuth sign-in for MCP clients (experimental), saved answers, cost tracking, OCR, SSO groups, SystemOne, reranking, public access and maintenance, each with a link to where it is set",
+    "alt": "The platform admin Overview: the platform at a glance, Needs attention, and its Features card, listing the state of evaluations, the MCP server, OAuth sign-in for MCP clients (experimental), saved answers, cost tracking, OCR, SSO groups, SystemOne, reranking, public access and maintenance, each with a link to where it is set, then recent changes.",
     "caption": "Admin Overview: every optional feature's state, and where to set it."
   },
   "costs-overview": {
-    "alt": "Admin Costs overview: spend, tokens, requests and unpriced usage, and a daily spend chart by kind: chat, embedding and rerank, SystemOne, moderation, OCR and MCP tools",
+    "alt": "Admin Costs overview: spend, tokens, requests and unpriced usage, and a daily spend chart by kind: chat, embedding and rerank, SystemOne, moderation, OCR and MCP tools.",
     "caption": "Costs: spend per team, agent and model, with monthly budgets.",
     "file": "admin-costs-overview"
   },
   "admin-parsing-ocr": {
-    "alt": "Admin Parsing and OCR settings, choosing an OCR backend and testing it",
+    "alt": "Admin Parsing and OCR settings: OCR turned on with the Tesseract backend chosen and its languages, and the limits per document, per worker and per team.",
     "caption": "Parsing & OCR: one backend, bounded per document, per worker and per team."
   },
   "admin-sso-groups": {
-    "alt": "Admin SSO groups: rules that map identity-provider groups to team roles, with a dry run",
+    "alt": "Admin SSO groups: a rule that maps an identity-provider group, it-staff, to the Editor role in a team, with the claim read at sign-in and how many people's last sign-in carried it.",
     "caption": "SSO groups: map identity-provider groups to team roles, with a dry run first."
   },
   "agent-share": {
-    "alt": "An agent's Share tab: audience, the public page, the embeddable widget snippet and the OpenAI-compatible model name",
+    "alt": "An agent's Share tab: a widget key with its allowed origins, the embed code with the launcher position, and a live preview of the widget with the agent's welcome and starter questions.",
     "caption": "Share an agent in the web UI, as an embedded widget, or through the OpenAI-compatible API.",
     "file": "agent-share-widget-preview"
   },
@@ -45,7 +45,7 @@
     "file": "chat-tool-source"
   },
   "health-connections": {
-    "alt": "Admin Connections with a Health column: three connections \"Healthy\" a few minutes ago and a backup gateway \"Failing · since 8 minutes ago\", with a Health filter.",
+    "alt": "Admin Connections with a Health column: three connections \"Healthy\" a few minutes ago and a backup gateway \"Failing · since 6 seconds ago\", with a Health filter.",
     "caption": "Stored health: the last test of every connection, model and MCP server, re-tested on a schedule.",
     "file": "admin-connections-health"
   },
@@ -59,24 +59,23 @@
     "caption": "A citation opens its passage in context, beside the answer, with the claims that cite it.",
     "file": "chat-source-viewer"
   },
+  "content-health-report": {
+    "alt": "A help desk team's content health report in Grounded: Not processed in a long time, Links that failed in the last crawl, The same file in two sources and Failed to parse or ingest marked Measured with what they found, No retained citation evidence marked Unavailable with its reason, and the links that failed listed.",
+    "caption": "A content health report: each signal is measured, not applicable or unavailable, never a silent zero."
+  },
   "gaps-topic": {
-    "alt": "A team's gap report topic, \"Campus parking permits\": 3 questions from 3 people, failed as Refused and Thumbs-down (Missing sources), one shared question with Add to evaluations, and the actions Dismiss, Mark fixed and Add a source.",
+    "alt": "A team's gap report topic, \"Campus parking permits\": 3 questions from 3 people, failed as Nothing found, Refused and Thumbs-down (Missing sources), one shared question with Add to evaluations, and the actions Dismiss, Mark fixed and Add a source.",
     "caption": "The gap report: questions agents couldn't answer, grouped into topics once three people asked.",
     "file": "gaps-topic"
   },
   "rerank-try-it": {
-    "alt": "A knowledge base's Try it with Rerank on: \"Reranked the best 40 passages in 452 ms\", and each result with its rerank score beside the usual score and its vector and keyword ranks.",
+    "alt": "A knowledge base's Try it with Rerank on: \"Reranked the best 40 passages in 4 ms\", and each result with its rerank score beside the usual score and its vector and keyword ranks.",
     "caption": "Try it shows each passage's rerank score, and can switch reranking off to compare.",
     "file": "kb-try-it-rerank"
   },
   "saved-answers": {
-    "alt": "A public agent's Settings, Saved answers: Reuse answers on, near-identical questions off, reuse an answer for 24 hours, \"1 saved answer now, reused once so far\", and Clear saved answers.",
+    "alt": "A public agent's Settings, Saved answers: Reuse answers on, near-identical questions off, reuse an answer for 24 hours, \"2 saved answers now, reused once between them\", and Clear saved answers.",
     "caption": "Saved answers: on by default for public agents, per agent, invisible to people.",
     "file": "agent-settings-saved-answers"
-  },
-  "dark-mode": {
-    "alt": "The same kind of help desk answer in Grounded's dark mode: the steps with citation chips, the claims summary, two source cards and follow-up questions, in light text on a dark background.",
-    "caption": "Dark mode follows the device, or a choice in the account menu.",
-    "file": "dark-chat-answer"
   }
 }
