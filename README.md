@@ -2,7 +2,9 @@
 
 The landing page for [Grounded](https://github.com/ncecere/grounded), an open-source (MIT), multi-tenant RAG and agents platform: teams turn their documents and websites into knowledge bases and publish agents that answer only from them, with citations. The site is served at https://grounded.bitop.dev; the documentation lives in its own repository and site, https://docs.grounded.bitop.dev.
 
-It's one long page plus a 404 page, with no pricing, sign-up, forms, cookies, tracking or third-party requests. The text describes Grounded **v0.6.1** and is checked against that release's README, changelog and design notes. `lib/site.ts` holds the version, the release day (set it when the release is tagged; the footer shows it) and the release links.
+It's one long page plus a 404 page, with no pricing, sign-up, forms, cookies, tracking or third-party requests. The text describes Grounded **v0.7.0** and is checked against that release's README, changelog, release notes (v0.6.2, v0.6.3 and v0.7.0) and design notes. `lib/site.ts` holds the version, the release day (set it when the release is tagged; the footer shows it), the release links (repository links are pinned to the tag; check each path exists at it with `git ls-tree -r --name-only <tag>`) and `whatsNewSince`.
+
+The page's sections, in order: the hero, How it works, What's new, Features (one block per feature area), Run it yourself and Project status. Feature text describes what Grounded does, without "New in vX" markers. What's new is the one place for recent changes: a card per theme (indexing, content health, people and integrations, security and operations at v0.7.0), each linking the docs, counted from `whatsNewSince`. At a release, rewrite the cards and move `whatsNewSince` forward rather than adding a card per release.
 
 ## Stack
 

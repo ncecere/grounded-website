@@ -8,15 +8,17 @@ export const site = {
   repoUrl: "https://github.com/ncecere/grounded",
   // A public agent on the maintainer's instance: anyone can chat with it, without signing in.
   demoUrl: "https://kb.bitop.dev/a/demo/grounded-agent",
-  version: "v0.6.1",
+  version: "v0.7.0",
   // The release day of `version` (the footer and the sitemap show it).
-  releaseDate: "2026-10-17",
-  releaseNotesUrl: "https://docs.grounded.bitop.dev/docs/releases/v0-6-1",
-  changelogUrl: "https://github.com/ncecere/grounded/blob/v0.6.1/CHANGELOG.md",
-  licenseUrl: "https://github.com/ncecere/grounded/blob/v0.6.1/LICENSE",
-  demoDocUrl: "https://github.com/ncecere/grounded/blob/v0.6.1/docs/demo.md",
-  kubernetesGuideUrl: "https://github.com/ncecere/grounded/blob/v0.6.1/docs/deployments/kubernetes.md",
-  securityUrl: "https://github.com/ncecere/grounded/blob/v0.6.1/SECURITY.md",
-  roadmapUrl: "https://github.com/ncecere/grounded/blob/v0.6.1/docs/roadmap.md",
+  releaseDate: "2026-11-01",
+  // The release the "What's new" section counts from: the page's previous version.
+  whatsNewSince: "v0.6.1",
+  releaseNotesUrl: "https://docs.grounded.bitop.dev/docs/releases/v0-7-0",
+  changelogUrl: "https://github.com/ncecere/grounded/blob/v0.7.0/CHANGELOG.md",
+  licenseUrl: "https://github.com/ncecere/grounded/blob/v0.7.0/LICENSE",
+  demoDocUrl: "https://github.com/ncecere/grounded/blob/v0.7.0/docs/demo.md",
+  kubernetesGuideUrl: "https://github.com/ncecere/grounded/blob/v0.7.0/docs/deployments/kubernetes.md",
+  securityUrl: "https://github.com/ncecere/grounded/blob/v0.7.0/SECURITY.md",
+  roadmapUrl: "https://github.com/ncecere/grounded/blob/v0.7.0/docs/roadmap.md",
   websiteRepoUrl: "https://github.com/ncecere/grounded-website",
 } as const;

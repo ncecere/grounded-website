@@ -14,15 +14,15 @@
     "width": 1440,
     "height": 900
   },
-  "team-overview-quality-and-spend": {
-    "src": "/images/team-overview-quality-and-spend.webp",
+  "admin-index-preview-comparison": {
+    "src": "/images/admin-index-preview-comparison.webp",
     "width": 1440,
     "height": 900
   },
   "admin-overview-features": {
     "src": "/images/admin-overview-features.webp",
     "width": 1440,
-    "height": 1940
+    "height": 1997
   },
   "costs-overview": {
     "src": "/images/costs-overview.webp",
@@ -64,6 +64,11 @@
     "width": 1440,
     "height": 900
   },
+  "content-health-report": {
+    "src": "/images/content-health-report.webp",
+    "width": 1440,
+    "height": 2400
+  },
   "gaps-topic": {
     "src": "/images/gaps-topic.webp",
     "width": 1440,
@@ -76,11 +81,6 @@
   },
   "saved-answers": {
     "src": "/images/saved-answers.webp",
-    "width": 1440,
-    "height": 900
-  },
-  "dark-mode": {
-    "src": "/images/dark-mode.webp",
     "width": 1440,
     "height": 900
   }
